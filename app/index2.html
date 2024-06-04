@@ -41,10 +41,11 @@
             </div>
 
             <div class="sub-title">
-                Please share your feedback on our service. Complete the form below, and we'll add 200 coins to your account as thanks for your input.
+                Rate our service and we'll add 200 coins to your account!
             </div>
 
-            <div>
+            <div class="rate-wrapper">
+                Rate service:
                 <rating class="rating-wrapper">
                     <input type="radio" name="rating2" value="1" aria-label="1 star" required/>
                     <input type="radio" name="rating2" value="2" aria-label="2 stars"/>
@@ -56,10 +57,14 @@
 
             
             <div class="sub-title sub-title--left">
-                Feedback Form:
+                Describe your experience:
             </div>
             
             <textarea name="" id="" class="feedback-form"></textarea>
+            <div class="counter">
+                <span class="current">0</span>&nbsp;/
+                <span class="total">500</span>
+              </div>
           
                <div>
       </div>
@@ -67,7 +72,7 @@
             
             <div class="next-button-wrapper">           
                 <div class="button">
-                <a href="succes2.html" class="submit-button disable"><b>👉 Submit 👈</b></a>
+                <div class="submit-button disable"><b>👉 Submit 👈</b></div>
             </div>
             <a href="" class="cancle-link">No thanks</a>
 
@@ -78,6 +83,71 @@
     </div>
     <!-- ---------------end content------------ -->
 
+    <!-- start thanks wrapper -->
+    <div class="content thanks-wrapper">
+        <div class="container">
+            <div class="sub-title sub-title--first">
+            Thanks for review! <br>
+            200 Coins added to your account!
+        </div>
+
+        <div class="sub-title bold">
+            Want +400 coins <br>
+            Publish your review to TrustPilot website! 
+        </div>
+
+        <div class="step">
+            <div class="step-title">
+                <b>STEP 1</b>: Copy your review
+            </div>
+            <div class="feedback"></div>
+            <div class="tooltip-wrapper">
+                <div class="tooltip">
+                Feedback text copied to clipboard!  
+            </div> 
+            <div class="copy-button">
+                <i class="fa-regular fa-copy"></i> Press to Copy
+            </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-title">
+                <b>STEP 2</b>: Post it on Trustpilot
+            </div>
+             
+            <a href="https://www.trustpilot.com/review/flirtu.io" target="_blank" class="trustpilot-button">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Trustpilot
+            </a>
+            
+        </div>
+
+       
+
+       
+        
+
+        </div>
+
+        <div class="next-button-wrapper">  
+            <div class="centered-text mb-20">
+                <div>
+                   <b>
+                       Submitted review on TrusPilot? 
+                   </b>       
+           </div>
+   
+           <div>
+               👇Press the button👇
+           </div>
+           </div>         
+            <div class="button">
+            <a href="succes2.html" class="submit-button"><b>👉 DONE 👈</b></a>
+        </div>
+        <a href="" class="cancle-link">No thanks</a>
+        </div>
+    </div>
+    <!-- end thanks wrapper -->
 
     <!-- start spinner -->
     <div class="spinner-wrapper">
@@ -153,6 +223,21 @@
     });
 });
     </script>
+
+
+<script>
+    const textarea = document.querySelector('textarea');
+const counter = document.querySelector('.current');
+const maxlength = 500;
+
+textarea.addEventListener('input', onInput)
+
+function onInput(event) {
+	event.target.value = event.target.value.substr(0, maxlength);
+  const length = event.target.value.length;
+  counter.textContent = length;
+}
+</script>
 
   
    
