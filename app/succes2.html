@@ -21,9 +21,8 @@
         <div class="container">
             <div class="logo">
                 <a href="https://flirtu.io/">
-                    <img src="img/logo.svg" alt="">
+                    <img src="img/logo.svg" alt="flirtu logo">
                     <h1>Telegram Dating</h1>
-
                 </a>
             </div>
         </div>
@@ -34,8 +33,6 @@
     <!-- ---------------start content------------ -->
     <div class="content content-succes">
         <div class="container">
-
-            
             <div class="sub-title bold">
                 Thanks for review! 
             </div>
@@ -43,79 +40,15 @@
             <div class="sub-title">
                 200 Coins added to your account! 
             </div>
-
-               </div>
-            
-
+               </div>           
         </div>
     </div>
     <!-- ---------------end content------------ -->
 
     <div class="next-button-wrapper return-button">           
         <div class="button">
-        <a href="https://flirtu.io/en/" class="submit-button"><b>👉 RETURN TO FLIRTU 👈</b></a>
+            <a href="https://flirtu.io/en/" class="submit-button"><b>👉 RETURN TO FLIRTU 👈</b></a>
+        </div>    
     </div>
-    
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const submitButton = document.querySelector('.submit-button');
-          const spinnerWrapper = document.querySelector('.spinner-wrapper');
-          const feedbackWrapper = document.querySelector('.feedback-wrapper');
-          const thanksWrapper = document.querySelector('.thanks-wrapper');
-          const feedbackForm = document.querySelector('.feedback-form');
-          const ratingWrapper = document.querySelector('.rating-wrapper');
-          const feedbackDisplay = document.querySelector('.thanks-wrapper .feedback');
-    
-          // Показать спиннер и скрыть feedback-wrapper на 5 секунд при нажатии на submit-button
-          submitButton.addEventListener('click', () => {
-            // Показать спиннер и скрыть feedback-wrapper
-            spinnerWrapper.style.display = 'block';
-           
-    
-            // Показать введенный текст в thanks-wrapper
-            feedbackDisplay.textContent = feedbackForm.value;
-    
-            // Через 5 секунд скрыть спиннер и показать thanks-wrapper
-            setTimeout(() => {
-                feedbackWrapper.style.display = 'none';
-              spinnerWrapper.style.display = 'none';
-              thanksWrapper.style.display = 'block';
-            }, 5000);
-          });
-    
-          // Убрать класс disable у submit-button, если введен хотя бы один символ в форму и выбран input в rating-wrapper
-          const checkFormValidity = () => {
-            const feedbackValue = feedbackForm.value.trim() !== '';
-            const ratingValue = Array.from(ratingWrapper.querySelectorAll('input[type="radio"]')).some(input => input.checked);
-    
-            if (feedbackValue && ratingValue) {
-              submitButton.classList.remove('disable');
-            } else {
-              submitButton.classList.add('disable');
-            }
-          };
-    
-          feedbackForm.addEventListener('input', checkFormValidity);
-          ratingWrapper.addEventListener('change', checkFormValidity);
-        });
-      </script>
-
-<script>
-   document.querySelector('.copy-button').addEventListener('click', function() {
-    const feedbackText = document.querySelector('.feedback').innerText;
-    navigator.clipboard.writeText(feedbackText).then(function() {
-        const tooltip = document.querySelector('.tooltip');
-        tooltip.style.display = 'block';
-        setTimeout(() => {
-            tooltip.style.display = 'none';
-        }, 2000);
-    }, function(err) {
-        console.error('Could not copy text: ', err);
-    });
-});
-    </script>
-
-  
    
 </html>

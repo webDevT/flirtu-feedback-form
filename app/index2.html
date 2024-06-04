@@ -1,41 +1,36 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Знакомства в Telegram</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-<link rel="stylesheet" href="css/style.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
 </head>
 
-<body data-new-gr-c-s-check-loaded="14.1155.0" data-gr-ext-installed="">
+<body>
 
     <!-- ---------start header------------->
     <div class="header">
         <div class="container">
             <div class="logo">
                 <a href="https://flirtu.io/">
-                    <img src="img/logo.svg" alt="">
+                    <img src="img/logo.svg" alt="fliru logo">
                     <h1>Telegram Dating</h1>
-
                 </a>
             </div>
         </div>
-
     </div>
     <!-- -----------end header---------- -->
 
     <!-- ---------------start content------------ -->
     <div class="content feedback-wrapper">
-        <div class="container">
-
-            
+        <div class="container">           
             <div class="sub-title bold">
                 Get 200 coins for Free
             </div>
@@ -54,8 +49,7 @@
                     <input type="radio" name="rating2" value="5" aria-label="5 stars"/>
                 </rating>
             </div>
-
-            
+         
             <div class="sub-title sub-title--left">
                 Describe your experience:
             </div>
@@ -81,12 +75,8 @@
 
         </div>
     </div>
-    <!-- ---------------end content------------ -->
-
-  
-
-   
-
+    <!-- ---------------end content------------ -->  
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
           const submitButton = document.querySelector('.submit-button');
@@ -97,16 +87,16 @@
           const ratingWrapper = document.querySelector('.rating-wrapper');
           const feedbackDisplay = document.querySelector('.thanks-wrapper .feedback');
     
-          // Показать спиннер и скрыть feedback-wrapper на 5 секунд при нажатии на submit-button
+          // Show spinner and hide feedback-wrapper for 5 seconds when submit-button is clicked
           submitButton.addEventListener('click', () => {
-            // Показать спиннер и скрыть feedback-wrapper
+            // Show spinner and hide feedback-wrapper
             spinnerWrapper.style.display = 'block';
            
     
-            // Показать введенный текст в thanks-wrapper
+            // Show entered text in thanks-wrapper
             feedbackDisplay.textContent = feedbackForm.value;
     
-            // Через 5 секунд скрыть спиннер и показать thanks-wrapper
+            // After 5 seconds, hide spinner and show thanks-wrapper
             setTimeout(() => {
                 feedbackWrapper.style.display = 'none';
               spinnerWrapper.style.display = 'none';
@@ -114,7 +104,7 @@
             }, 5000);
           });
     
-          // Убрать класс disable у submit-button, если введен хотя бы один символ в форму и выбран input в rating-wrapper
+          // Remove disable class from submit-button if at least one character is entered in the form and an input in the rating-wrapper is selected
           const checkFormValidity = () => {
             const feedbackValue = feedbackForm.value.trim() !== '';
             const ratingValue = Array.from(ratingWrapper.querySelectorAll('input[type="radio"]')).some(input => input.checked);
@@ -155,12 +145,10 @@ const maxlength = 500;
 textarea.addEventListener('input', onInput)
 
 function onInput(event) {
-	event.target.value = event.target.value.substr(0, maxlength);
-  const length = event.target.value.length;
-  counter.textContent = length;
+    event.target.value = event.target.value.substr(0, maxlength);
+    const length = event.target.value.length;
+    counter.textContent = length;
 }
 </script>
-
-  
-   
+ 
 </html>
