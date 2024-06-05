@@ -717,8 +717,10 @@ rating input[type=radio]:checked ~ input[type=radio]:not(:checked)::after
   display: flex 
   align-items: center
 //end thanks style 
-.submit-button.disable
+.submit-button.disable,
+.done-button.disable
   background: #ABA9A9
+  pointer-events: none
   b 
     opacity: 0.7
 .tooltip

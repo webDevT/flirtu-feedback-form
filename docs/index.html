@@ -126,7 +126,7 @@
                 </div>
             </div>
             <div class="button">
-                <div class="done-button"><b>👉 DONE 👈</b></div>
+                <div class="done-button disable"><b>👉 DONE 👈</b></div>
             </div>
             <a href="" class="cancle-link">No thanks</a>
         </div>
@@ -135,43 +135,39 @@
 
     <!-- ---------------start content------------ -->
     <div class="content content-succes">
-        <div class="container">         
+        <div class="container">
             <div class="sub-title bold">
-                Great! 
+                Great!
             </div>
             <div class="sub-title">
                 We will check your review on TrustPilot
-                and will top up 400 coins when it will be published! 
+                and will top up 400 coins when it will be published!
             </div>
 
             <div class="feedback"></div>
-                <div class="tooltip-wrapper">
-                    <div class="tooltip">
-                        Feedback text copied to clipboard!
-                    </div>
-
-                    <div class="buttons-wrapper">
-                        <div class="copy-button">
-                            <i class="fa-regular fa-copy"></i> Press to Copy
-                        </div>
-    
-                        <a href="https://www.trustpilot.com/review/flirtu.io" target="_blank" class="trustpilot-button">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Trustpilot
-                        </a>
-                    </div>
-                   
-                    
+            <div class="tooltip-wrapper">
+                <div class="tooltip">
+                    Feedback text copied to clipboard!
                 </div>
-               </div>      <div class="next-button-wrapper return-button">           
-            <div class="button">
-            <a href="https://flirtu.io/en/" class="submit-button"><b>👉 RETURN TO FLIRTU 👈</b></a>       
-        </div>
-        
-        </div>       
-        </div>
 
-       
-        
+                <div class="buttons-wrapper">
+                    <div class="copy-button">
+                        <i class="fa-regular fa-copy"></i> Press to Copy
+                    </div>
+
+                    <a href="https://www.trustpilot.com/review/flirtu.io" target="_blank" class="trustpilot-button">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Trustpilot
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <div class="next-button-wrapper return-button">
+            <div class="button">
+                <a href="https://flirtu.io/en/" class="submit-button"><b>👉 RETURN TO FLIRTU 👈</b></a>
+            </div>
+
+        </div>
     </div>
     <!-- ---------------end content------------ -->
 
@@ -202,7 +198,10 @@
             const feedbackDisplays = document.querySelectorAll('.feedback');
             const copyButtons = document.querySelectorAll('.copy-button');
             const feedbackElements = document.querySelectorAll('.feedback');
-            const tooltips = document.querySelectorAll('.tooltip');        
+            const tooltips = document.querySelectorAll('.tooltip');
+            const trustpilotButton = document.querySelector('.trustpilot-button');
+            const doneButton = document.querySelector('.done-button');
+            
 
             // Show spinner and hide feedback-wrapper for 5 seconds when submit-button is clicked
             submitButton.addEventListener('click', () => {
@@ -235,60 +234,68 @@
                 }
             };
 
+            // Add event listeners for the form and rating inputs
             feedbackForm.addEventListener('input', checkFormValidity);
-            ratingWrapper.addEventListener('change', checkFormValidity);
+            ratingWrapper.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.addEventListener('change', checkFormValidity);
+            });
 
-            // Add event listener to each copy button
-            copyButtons.forEach((button, index) => {
-                button.addEventListener('click', () => {
-                    const feedbackText = feedbackDisplays[index].innerText;
-                    navigator.clipboard.writeText(feedbackText).then(function () {
-                        tooltips[index].style.display = 'block';
-                        setTimeout(() => {
-                            tooltips[index].style.display = 'none';
-                        }, 2000);
-                    }, function (err) {
-                        console.error('Could not copy text: ', err);
-                    });
+            // Add event listeners for copy-buttons
+            copyButtons.forEach((copyButton, index) => {
+                copyButton.addEventListener('click', () => {
+                    const feedbackText = feedbackElements[index].textContent;
+                    const textarea = document.createElement('textarea');
+                    textarea.value = feedbackText;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    tooltips[index].style.display = 'block';
+                    setTimeout(() => {
+                        tooltips[index].style.display = 'none';
+                    }, 2000);
                 });
             });
 
-            // Add event listener to each feedback element
-            feedbackElements.forEach((element, index) => {
-                element.addEventListener('click', () => {
-                    const feedbackText = feedbackDisplays[index].innerText;
-                    navigator.clipboard.writeText(feedbackText).then(function () {
-                        tooltips[index].style.display = 'block';
-                        setTimeout(() => {
-                            tooltips[index].style.display = 'none';
-                        }, 2000);
-                    }, function (err) {
-                        console.error('Could not copy text: ', err);
-                    });
-                });
+            // Add event listeners for feedback elements
+feedbackElements.forEach((feedbackElement, index) => {
+    feedbackElement.addEventListener('click', () => {
+        const feedbackText = feedbackElement.textContent;
+        const textarea = document.createElement('textarea');
+        textarea.value = feedbackText;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        tooltips[index].style.display = 'block';
+        setTimeout(() => {
+            tooltips[index].style.display = 'none';
+        }, 2000);
+    });
+});
+
+
+            // Remove disable class from done-button if trustpilot-button is clicked
+            trustpilotButton.addEventListener('click', () => {
+                doneButton.classList.remove('disable');
             });
 
-            document.querySelector('.done-button').addEventListener('click', () => {
+          
+
+            // Hide thanks-wrapper and show content-success when done-button is clicked
+            doneButton.addEventListener('click', () => {
                 thanksWrapper.style.display = 'none';
                 contentSuccess.style.display = 'block';
+                header.style.display = 'none';
+            });  
+            
+            doneButton.addEventListener('click', () => {
                 header.style.display = 'block';
             });
         });
     </script>
 
-    <script>
-        const textarea = document.querySelector('textarea');
-        const counter = document.querySelector('.current');
-        const maxlength = 500;
-
-        textarea.addEventListener('input', onInput);
-
-        function onInput(event) {
-            event.target.value = event.target.value.substr(0, maxlength);
-            const length = event.target.value.length;
-            counter.textContent = length;
-        }
-    </script>
+    
 
 </body>
 
