@@ -737,6 +737,11 @@ rating input[type=radio]:checked ~ input[type=radio]:not(:checked)::after
   cursor: pointer
   margin-top: 15px
   transition: background-color 0.3s, transform 0.1s
+  font-weight: 700
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
 .trustpilot-button 
   margin-top: 5px
 .copy-button:hover
@@ -841,7 +846,24 @@ rating input[type=radio]:checked ~ input[type=radio]:not(:checked)::after
   text-decoration: none
 .mb-20 
   margin-bottom: 20px
+.content-succes
+  display: none
+.buttons-wrapper 
+  display: flex 
+  justify-content: space-between
+  align-items: center
+  margin-top: 15px
+  .copy-button,
+  .trustpilot-button
+    width: 48%
+    padding-left: 7px 
+    padding-right: 7px
+    font-size: 14px
+    margin-top: 0 
+    margin-bottom: 0
+
 @import "media"
+
 
 
 
