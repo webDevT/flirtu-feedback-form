@@ -107,7 +107,7 @@
                     <b>STEP 2</b>: Post it on Trustpilot
                 </div>
 
-                <a href="https://www.trustpilot.com/review/flirtu.io" target="_blank" class="trustpilot-button">
+                <a href="https://www.trustpilot.com/review/flirtu.io" target="_blank" rel="noopener noreferrer" class="trustpilot-button">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Trustpilot
                 </a>
             </div>
@@ -155,7 +155,7 @@
                         <i class="fa-regular fa-copy"></i> Press to Copy
                     </div>
 
-                    <a href="https://www.trustpilot.com/review/flirtu.io" target="_blank" class="trustpilot-button">
+                    <a href="https://www.trustpilot.com/review/flirtu.io" target="_blank" rel="noopener noreferrer" class="trustpilot-button">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Trustpilot
                     </a>
                 </div>
@@ -307,7 +307,28 @@
     </script>
 
     
+<script>
+    const textarea = document.querySelector('textarea');
+const counter = document.querySelector('.current');
+const maxlength = 500;
 
+textarea.addEventListener('input', onInput)
+
+function onInput(event) {
+    event.target.value = event.target.value.substr(0, maxlength);
+    const length = event.target.value.length;
+    counter.textContent = length;
+}
+</script>
+<script>
+    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.open(this.href, '_blank');
+    });
+});
+
+</script>
 </body>
 
 </html>
